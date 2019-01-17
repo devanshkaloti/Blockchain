@@ -23,8 +23,10 @@ There are two initializers for this class.
 - ```public Block(int nonce)``` is used by the console. Simply initializes a new block
 - ```public Block(int nonce, String transactionsList)``` is used by the GUI. It takes the transactions from the CSV file.
 
-### ```Transaction```
+### ```Transaction.java```
 The transaction class stores the barebones for any transaction to occur. It contain's the properties for the data, which is initialized through the class initializer. 
+
+
 
 
 ## How to Use Prototype (From Console)
