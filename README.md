@@ -1,7 +1,6 @@
 # Blockchain-Prototype
 This is a prototype of a blockchain database setup in Java. You may get a better clarity of how Blockchain works in Java. All the blocks part of the one blockchain are stored in the ```database.csv``` file. Note: Error handling has not been implemented yet.
 
-
 ## Classes
 ### ```Blockchain.java```
 This class stores the properties and methods for the blockchain. The initializer will add the genesis block (or whichever first block is passed) to the blockchain by default. The hash function uses ```MessageDigest.getInstance("SHA-256")``` from ```DKHelpers.java```
@@ -30,6 +29,12 @@ The transaction class stores the barebones for any transaction to occur. It cont
 
 
 ## How to Use Prototype (From Console)
+### Installation
+```
+$ git clone https://github.com/devanshkaloti/DKHelpers-Java
+```
+
+
 #### Create the blockchain
 ``` Blockchain blockchain = new Blockchain(Blockchain.readBlock()); ```
 
