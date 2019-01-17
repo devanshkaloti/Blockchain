@@ -2,6 +2,7 @@ package userinterface;
 
 import blockchain.Block;
 import blockchain.Blockchain;
+import blockchain.DKHelpers;
 import blockchain.Transaction;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -26,7 +27,7 @@ public class mainVC extends Application {
         window = primaryStage;
 
         // Create new Blockchain
-        Block genesisBlock = new Block(0);
+        Block genesisBlock = new Block(2);
         blockchain = new Blockchain(genesisBlock);
 
         launchV1();
@@ -37,9 +38,8 @@ public class mainVC extends Application {
         window.setTitle("Dashboard");
         window.setOnCloseRequest(e -> { e.consume(); window.close();});
 
-        // Create new Blockchain
-        Block genesisBlock = new Block(0);
-        blockchain = new Blockchain(genesisBlock);
+        // Create blockchain
+        Blockchain blockchain = new Blockchain(Blockchain.readBlock());
 
 
         VBox layout1 = new VBox(10);
@@ -74,8 +74,11 @@ public class mainVC extends Application {
             Transaction transaction = new Transaction(from.getText(), to.getText(), Double.parseDouble(amount.getText()));
             transactions.clear(); // TEMP
             transactions.add(transaction);
-            Block Gblock = blockchain.getNextBlock(transactions);
-            blockchain.addBlock(Gblock);
+
+            Block block = blockchain.getNextBlock(transactions);
+            blockchain.addBlock(block);
+            String[] dt = {String.valueOf(block.index), String.valueOf(block.nonce), block.hash, block.previousHash, String.valueOf(block.datetime), block.getTransactions().replace(",", "---")};
+            DKHelpers.writeRow(dt);
 
             System.out.println("TRANSACTION");
         });
@@ -146,7 +149,23 @@ public class mainVC extends Application {
 
     public ObservableList<Block> getBlocks() {
         ObservableList<Block> blocks = FXCollections.observableArrayList();
-        for (Block block: blockchain.blocks) {
+        ArrayList<String[]> data = DKHelpers.readCSV();
+        ArrayList<Block> blockchainFetched = Blockchain.readBlocks();
+
+//    for (String[] rows: DKHelpers.readCSV()) {
+//        for (String column: rows) {
+//            System.out.println(column);
+//        }
+//
+//        System.out.println();
+//    }
+
+//        for (Block block: ) {
+//            blocks.add(block);
+//            System.out.println("BLOCk");
+//        }
+
+        for (Block block: blockchainFetched) {
             blocks.add(block);
             System.out.println("BLOCk");
         }
