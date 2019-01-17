@@ -1,5 +1,5 @@
 # Blockchain-Prototype
-This is a prototype of a blockchain database setup in Java. You may get a better clarity of how Blockchain works in Java. All The blocks part of the one blockchain are stored in the ```database.csv``` file. Note: Error handling has not been implemented yet.
+This is a prototype of a blockchain database setup in Java. You may get a better clarity of how Blockchain works in Java. All the blocks part of the one blockchain are stored in the ```database.csv``` file. Note: Error handling has not been implemented yet.
 
 
 ## Classes
@@ -31,13 +31,13 @@ The transaction class stores the barebones for any transaction to occur. It cont
 #### Create the blockchain
 ``` Blockchain blockchain = new Blockchain(Blockchain.readBlock()); ```
 
-#### Add first transaction
+#### Add transaction
 ``` 
     Transaction transaction = new Transaction("Mary", "John", 10.0);
     ArrayList<Transaction> transactionsLIST = new ArrayList<>(Arrays.asList(transaction));
 ```
 
-#### Add first block
+#### Add block
 ``` 
     Block block = blockchain.getNextBlock(transactionsLIST);
     blockchain.addBlock(block);
