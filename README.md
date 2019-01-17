@@ -36,7 +36,9 @@ $ git clone https://github.com/devanshkaloti/DKHelpers-Java
 
 
 #### Create the blockchain
-``` Blockchain blockchain = new Blockchain(Blockchain.readBlock()); ```
+``` 
+Blockchain blockchain = new Blockchain(Blockchain.readBlock()); 
+```
 
 #### Add transaction
 ``` 
